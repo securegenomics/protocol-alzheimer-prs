@@ -1,0 +1,9 @@
+name: "alzheimer-prs"
+version: "1.0.0"
+description: "Local computation of polygenic risk score for Alzheimer's disease"
+author: "SecureGenomics Research Team"
+contact: "research@securegenomics.com"
+
+# Computation modes supported
+modes:
+  - local       # Supports local-only analysis
