@@ -1,27 +1,24 @@
-
 def local_interpret(prs: float) -> str:
     """
     Interpret the PRS score.
+    Returns a formatted string containing the risk assessment.
     """
     
-    print("\n\n" + "="*60)
-    print("Alzheimer's Disease Risk Assesment")
-    print("="*60 + "\n")
+    output = []
+    output.append("\n\n" + "="*60)
+    output.append("Alzheimer's Disease Risk Assesment") 
+    output.append("="*60 + "\n")
     
-    print("Your polygenic risk score (PRS) is:" + str(prs))
-    print()
-    
+    output.append("Your polygenic risk score (PRS) is:  " + str(prs))
+    output.append("")
     
     if prs > 1.2:
-        print("\033[91mHIGH RISK\033[0m")  # Red
+        output.append("\033[91mHIGH RISK\033[0m")  # Red
     elif prs > 0.8:
-        print("\033[0mMODERATE RISK\033[0m")  # Normal
+        output.append("\033[0mMODERATE RISK\033[0m")  # Normal
     else:
-        print("\033[92mLOW RISK\033[0m")  # Green
+        output.append("\033[92mLOW RISK\033[0m")  # Green
         
-    print("\n" + "="*60 + "\n")
-        
-        
-        
-        
-        
+    output.append("\n" + "="*60 + "\n")
+    
+    return "\n".join(output)
