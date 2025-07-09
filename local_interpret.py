@@ -22,10 +22,18 @@ def local_interpret(prs: float) -> str:
         else green("LOW RISK")
     )
     
-    return f'''{blue("\n\n" + "="*60)}
-{blue("Alzheimer's Disease Risk Assesment")}
-{blue("="*60 + "\n")}
-{blue(f"Your polygenic risk score (PRS) is:  {prs:.2f}")}
+    line = blue("=" * 60)
+    title = blue("Alzheimer's Disease Risk Assessment")
+    score = blue(f"Your polygenic risk score (PRS) is:  {prs:.2f}")
+    
+    return f"""
+{line}
+{title}
+{line}
+
+{score}
 
 {risk_level}
-{blue("\n" + "="*60 + "\n")}'''
+
+{line}
+"""
