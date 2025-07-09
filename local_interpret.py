@@ -9,22 +9,23 @@ def local_interpret(prs: float) -> str:
     BLUE = "\033[94m"
     END = "\033[0m"
     
-    output = []
+    def red(text):
+        return RED + text + END
+    def green(text):
+        return GREEN + text + END
+    def blue(text):
+        return BLUE + text + END
     
-    output.append(BLUE + "\n\n" + "="*60)
-    output.append("Alzheimer's Disease Risk Assesment") 
-    output.append("="*60 + END + "\n")
+    risk_level = (
+        red("HIGH RISK") if prs > 1.2
+        else blue("MODERATE RISK") if prs > 0.8
+        else green("LOW RISK")
+    )
     
-    output.append("Your polygenic risk score (PRS) is:  " + "{:.2f}".format(prs))
-    output.append("")
-    
-    if prs > 1.2:
-        output.append(RED + "HIGH RISK" + END)
-    elif prs > 0.8:
-        output.append(BLUE + "MODERATE RISK" + END)
-    else:
-        output.append(GREEN + "LOW RISK" + END)
-        
-    output.append(BLUE + "\n" + "="*60 + END + "\n")
-    
-    return "\n".join(output)
+    return f'''{blue("\n\n" + "="*60)}
+{blue("Alzheimer's Disease Risk Assesment")}
+{blue("="*60 + "\n")}
+{blue(f"Your polygenic risk score (PRS) is:  {prs:.2f}")}
+
+{risk_level}
+{blue("\n" + "="*60 + "\n")}'''
